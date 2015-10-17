@@ -9,6 +9,7 @@ var path = require('path');
 var chroma = require('chroma-js');
 var finalhandler = require('finalhandler');
 var serveStatic = require('serve-static');
+var open = require("open");
 
 
 var serve = serveStatic(path.join(__dirname, 'static')); // serves client JS files
@@ -35,6 +36,8 @@ server.listen(8001);
 var io = require('socket.io')(server);
 /* init sockets */
 var ioServer = io.listen(server);
+
+open('http://localhost:8001/');
 
 io.on('connection', function(socket){
   console.log('a user connected');
