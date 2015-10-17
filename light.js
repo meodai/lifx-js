@@ -71,6 +71,7 @@ io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('disconnect', function(){
     console.log('user disconnected');
+    changeLights();
   });
   socket.on('color change', function(color){
     console.log('new color: ' + color);
@@ -99,7 +100,7 @@ function changeLights (color) {
     if (color){
       client.light(light.id).color(hsl[0], hsl[1] * 100, hsl[2] * 100, 4000, 450);
     }else{
-      client.light(light.id).color(360, 30, 20, 9000, 10000);
+      client.light(light.id).color(360, 30, 20, 9000, 5000);
     }
   })
 };
