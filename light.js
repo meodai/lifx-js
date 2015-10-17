@@ -5,20 +5,33 @@ var http = require('http');
 var url = require('url');
 var fs = require('fs');
 var jade = require('jade');
+var path = require('path');
 var chroma = require('chroma-js');
+var finalhandler = require('finalhandler');
+var serveStatic = require('serve-static');
+
+
+var serve = serveStatic(path.join(__dirname, 'static')); // serves client JS files
 
 /* create a simple HTTP server */
 var server = http.createServer(function(request, response){
-  console.log('Connection');
-  var path = url.parse(request.url).pathname;
-  var html = jade.renderFile(__dirname + '/html/index.jade');
+  var uri = url.parse(request.url).pathname
+  console.log('connection...');
 
-  response.writeHead(200, {"Content-Type": "text/html"});
-  response.write(html, "utf8");
-  response.end();
+  if( uri.match(/.js/g) ) {
+    console.log('serving static file')
+    var done = finalhandler(request, response);
+    serve(request, response, done);
+  } else {
+    var html = jade.renderFile(__dirname + '/html/index.jade');
+    response.write(html, "utf8");
+    response.end();
+  }
+
 });
 
 server.listen(8001);
+
 var io = require('socket.io')(server);
 /* init sockets */
 var ioServer = io.listen(server);
