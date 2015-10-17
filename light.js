@@ -11,6 +11,21 @@ var finalhandler = require('finalhandler');
 var serveStatic = require('serve-static');
 var open = require('open');
 var webpackCompiler = require('webpack');
+var os = require('os');
+
+function getIP () {
+  var interfaces = os.networkInterfaces();
+  var addresses = [];
+  for (var k in interfaces) {
+      for (var k2 in interfaces[k]) {
+          var address = interfaces[k][k2];
+          if (address.family === 'IPv4' && !address.internal) {
+              addresses.push(address.address);
+          }
+      }
+  }
+  return addresses[0];
+}
 
 // compiles client JS using webpack
 webpackCompiler({
@@ -50,7 +65,7 @@ var io = require('socket.io')(server);
 /* init sockets */
 var ioServer = io.listen(server);
 
-open('http://localhost:8001/');
+open('http://' + getIP() + ':8001');
 
 io.on('connection', function(socket){
   console.log('a user connected');
