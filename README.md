@@ -3,7 +3,7 @@ very simple node.js server with sockets to play around with lifx bulbs. Makes us
 
 ## Setup:
 ```
-    npm install && node light
+    npm install && npm start
 ```
 Will install all the dependancies and run light.js
 
