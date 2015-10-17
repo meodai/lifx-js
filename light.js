@@ -9,8 +9,21 @@ var path = require('path');
 var chroma = require('chroma-js');
 var finalhandler = require('finalhandler');
 var serveStatic = require('serve-static');
-var open = require("open");
+var open = require('open');
+var webpackCompiler = require('webpack');
 
+// compiles client JS using webpack
+webpackCompiler({
+  entry: __dirname + '/client-js/main.js',
+  output: {
+    path: __dirname + '/static/',
+    filename: 'main.js'
+  }
+}).watch({}, function(err){
+  if(err) {
+    console.log(err);
+  }
+});
 
 var serve = serveStatic(path.join(__dirname, 'static')); // serves client JS files
 

@@ -1,3 +1,3 @@
 var chroma = require('chroma-js');
 
-console.log(chroma)
+console.log(chroma);
