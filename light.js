@@ -18,8 +18,8 @@ var server = http.createServer(function(request, response){
   var uri = url.parse(request.url).pathname
   console.log('connection...');
 
-  if( uri.match(/.js/g) ) {
-    console.log('serving static file')
+  if( uri.match(/.js|.css|.jpg|.png|.svg/g) ) {
+    console.log('serving static file');
     var done = finalhandler(request, response);
     serve(request, response, done);
   } else {
