@@ -1,3 +1,7 @@
 var chroma = require('chroma-js');
 
-console.log(chroma);
+var socket = io();
+
+$(document).on('change', '#color', function(){
+    socket.emit('color change', $(this).val());
+});

@@ -11,8 +11,6 @@ html(lang='en')
 
     script(src='/socket.io/socket.io.js')
     script(src='//code.jquery.com/jquery-2.1.4.min.js')
+    script(src='main.js')
     script.
-      var socket = io();
-      $(document).on('change', '#color', function(){
-        socket.emit('color change', $(this).val());
-      });
+
