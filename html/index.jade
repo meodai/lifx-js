@@ -1,0 +1,18 @@
+doctype html
+html(lang='en')
+  head
+    title socket light
+  body
+    h1 light!
+      form
+        label
+          strong color
+          input(type='color')#color
+
+    script(src='/socket.io/socket.io.js')
+    script(src='//code.jquery.com/jquery-2.1.4.min.js')
+    script.
+      var socket = io();
+      $(document).on('change', '#color', function(){
+        socket.emit('color change', $(this).val());
+      });
