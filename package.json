@@ -4,13 +4,16 @@
   "description": "",
   "main": "light.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node light"
   },
   "author": "meodai <meodai@gmail.com> (https://github.com/meodai/)",
   "license": "ISC",
   "dependencies": {
     "chroma-js": "^1.1.1",
+    "color-thief": "lokesh/color-thief",
     "finalhandler": "^0.4.0",
+    "getusermedia-js": "^0.3.0",
     "jade": "^1.11.0",
     "jquery": "^2.1.4",
     "node-lifx": "^0.2.0",
