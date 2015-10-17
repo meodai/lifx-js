@@ -2,15 +2,23 @@ doctype html
 html(lang='en')
   head
     title socket light
+    style.
+      input[type=color] {
+        display: block;
+        width: 640px;
+        height: 50px;
+      }
+      form {
+        width: 640px;
+        margin: 0 auto;
+      }
   body
-    h1 light!
-      form
-        label
-          strong color
-          input(type='color')#color
-    video#cam
-    img#camOutputImg
-    #cam-average-color
+    form
+      label
+        input(type='color')#color
+      video#cam
+      img#camOutputImg
+      #cam-average-color
 
 
     script(src='/socket.io/socket.io.js')

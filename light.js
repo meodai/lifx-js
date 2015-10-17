@@ -97,7 +97,7 @@ function changeLights (color) {
 
   client.lights().forEach(function(light){
     if (color){
-      client.light(light.id).color(hsl[0], hsl[1] * 100, hsl[2] * 100, 4000);
+      client.light(light.id).color(hsl[0], hsl[1] * 100, hsl[2] * 100, 4000, 450);
     }else{
       client.light(light.id).color(360, 30, 20, 9000, 10000);
     }
